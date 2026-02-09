@@ -21,15 +21,15 @@
         }
        
         async function serial() {
-            const promiseA = await resolve(10)
-            const promiseB = await resolve(20)
-            const promiseC = await resolve(20)
+            const promiseA = resolve(10)
+            const promiseB = resolve(20)
+            const promiseC = resolve(30)
             return (await promiseA) + (await promiseB) + (await promiseC);
         }        
 
         async function executionTime(func) {
             const start = performance.now()
-            await func
+            await func();
             const end = performance.now()
             return end - start;
         }
