@@ -9,11 +9,12 @@
 
 <body>
     <p id="valasz"></p>
+    <button id = "nevnap_lekeres">Névnapok lekérése</button>
     <script>
         async function nevnapok() {
             const response = await
                 fetch("https://nameday.abalin.net/api/V1/today");
-            const nevek = await response.json();
+           const nevek = await response.json();
             document.getElementById("valasz").innerHTML = JSON.stringify(nevek);
         }
         nevnapok();
