@@ -17,11 +17,10 @@
 
         <label for="nap">Nap</label>
         <input type="number" id="nap" name="nap" min="1" max = "31" required>
-
-
     </form>
 
     <p id = "post_valasz"></p>
+
     <script>
         async function nevnapok() {
             const response = await
@@ -35,8 +34,8 @@
 
         async function nevnapPost(){
             const data = {
-                "day": 16,
-                "month": 2
+                "day": nap,
+                "month": honap
             }
 
 
@@ -70,7 +69,7 @@
             const honap = document.getElementById("honap").value
 
             console.log(nap, honap)
-            nevnapPost()(nap, honap)
+            nevnapPost(nap, honap)
         }
 
         document.getElementById("datum_form").addEventListener("submit", nevnapMegjelenites)
