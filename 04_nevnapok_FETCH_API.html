@@ -59,15 +59,20 @@
                 nevek_str += (`${orszag}: ${nevek.data[orszag]} <br>`);
             }
 
-            document.getElementById("post_valasz").innerHTML = nevek.data
-
-
-
-            
+            document.getElementById("post_valasz").innerHTML = nevek_str  
             
         }
 
-        document.getElementById("datum_form").addEventListener("submint", nevnapMegjelenites)
+        function nevnapMegjelenites(event)
+        {
+            event.preventDefault();
+            const nap = document.getElementById("nap").value
+            const honap = document.getElementById("honap").value
+
+            console.log(nap, honap)
+        }
+
+        document.getElementById("datum_form").addEventListener("submit", nevnapMegjelenites)
         nevnapPos()
 
 
