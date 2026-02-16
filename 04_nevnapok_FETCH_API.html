@@ -33,7 +33,7 @@
 
         document.getElementById("nevnap_lekeres").addEventListener("onlcick", nevnapok)
 
-        async function nevnapPosat(){
+        async function nevnapPost(){
             const data = {
                 "day": 16,
                 "month": 2
@@ -70,10 +70,11 @@
             const honap = document.getElementById("honap").value
 
             console.log(nap, honap)
+            nevnapPost()(nap, honap)
         }
 
         document.getElementById("datum_form").addEventListener("submit", nevnapMegjelenites)
-        nevnapPos()
+        nevnapPost()
 
 
     </script>
