@@ -11,6 +11,16 @@
     <p id="valasz"></p>
     <button id = "nevnap_lekeres">Névnapok lekérése</button>
 
+    <form id="datum_form">
+        <label for="honap">Hónap</label>
+        <input type="number" id="honap" name="honap" min="1" max = "12" required>
+
+        <label for="nap">Nap</label>
+        <input type="number" id="nap" name="nap" min="1" max = "31" required>
+
+
+    </form>
+
     <p id = "post_valasz"></p>
     <script>
         async function nevnapok() {
@@ -46,14 +56,19 @@
             nevek_str = ""
             
             for (const orszag in nevek.data){
-                nevek_str += `${orszag}: ${nevek.data[orszag]} <br>`
+                nevek_str += (`${orszag}: ${nevek.data[orszag]} <br>`);
             }
 
             document.getElementById("post_valasz").innerHTML = nevek.data
 
+
+
             
             
         }
+
+        document.getElementById("datum_form").addEventListener("submint", nevnapMegjelenites)
+        nevnapPos()
 
 
     </script>
