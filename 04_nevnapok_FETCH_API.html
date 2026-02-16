@@ -10,6 +10,8 @@
 <body>
     <p id="valasz"></p>
     <button id = "nevnap_lekeres">Névnapok lekérése</button>
+
+    <p id = "post_valasz"></p>
     <script>
         async function nevnapok() {
             const response = await
@@ -18,6 +20,42 @@
             document.getElementById("valasz").innerHTML = JSON.stringify(nevek);
         }
         nevnapok();
+
+        document.getElementById("nevnap_lekeres").addEventListener("onlcick", nevnapok)
+
+        async function nevnapPosat(){
+            const data = {
+                "day": 16,
+                "month": 2
+            }
+
+
+            const response = await
+            fetch("https://nameday.abalin.net/api/V2/date", {
+                method: "POST",
+                headers: {
+                    'Accept': 'applcation/json',
+                    'Content-Type': 'applcation/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            const nevek = await response.json();
+            console.log(nevek);
+            console.log(nevek.data);
+            nevek_str = ""
+            
+            for (const orszag in nevek.data){
+                nevek_str += `${orszag}: ${nevek.data[orszag]} <br>`
+            }
+
+            document.getElementById("post_valasz").innerHTML = nevek.data
+
+            
+            
+        }
+
+
     </script>
 
 
